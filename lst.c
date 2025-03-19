@@ -45,35 +45,61 @@ void print_stack(t_stack *stack)
 		stack = stack->next;
 	}
 }
+t_stack *liststring(char **argv) 
+{
+	char **matrixnum = NULL;
+	t_stack *newnode;
+    int j = 0;
+	t_stack *temp = 0;
+
+    matrixnum = ft_split(argv[1], ' ');
+    if (!matrixnum)
+        return(0);
+    temp = ft_lstnew(ft_atoi(matrixnum[j]));
+    j++;
+    while (matrixnum[j])
+    {
+	    newnode = ft_lstnew(ft_atoi(matrixnum[j]));
+        if (!newnode)
+            return (0);
+        ft_lstadd_back (&temp, newnode);
+        j++;
+    }
+	return(temp);
+}
+
+t_stack *listargv(char **argv) 
+{
+	t_stack *newnode;
+	t_stack *temp = 0;
+    int k = 1;
+
+	temp = ft_lstnew(ft_atoi(argv[k]));
+	while (argv[++k])
+	{
+		newnode = ft_lstnew(ft_atoi(argv[k]));
+        if (!newnode)
+            return (0);
+        ft_lstadd_back (&temp, newnode);
+	}
+
+	return(temp);
+}
 
 int createstack(int argc, char **argv, t_stack *a)
 {
-    t_stack *newnode;
-    char **matrixnum;
-    int j;
-
-    j = 0;
-    while (argv[j])
-    {
-        if (argc == 2)
-        {
-            matrixnum = ft_split(argv[1], ' ');
-            if (!matrixnum)
-                return(0);
-            a = ft_lstnew(ft_atoi(matrixnum[j]));
-            j++;
-            while (matrixnum[j])
-            {
-                newnode = ft_lstnew(ft_atoi(matrixnum[j]));
-                if (!newnode)
-                    return (0);
-                // print_stack(a); 
-                // print_stack(newnode); 
-                ft_lstadd_back ((t_stack **)a, newnode);
-                j++;
-            }
-        }
-        break ;
-    }
+	if (argc == 2)
+	{
+		a = liststring(argv);
+		if (!a)
+			return(0);
+	}
+	else 
+	{
+		a = listargv(argv);
+		if (!a)
+			return(0);
+	}
+	print_stack(a);
     return (1);
 }
