@@ -11,5 +11,4 @@ int main(int argc, char **argv)
         return(ft_printf("Error checkarguments\n"), 1);
     if(!createstack(argc, argv, a))
         return(ft_printf("Error createstack\n"), 1);
-
 }

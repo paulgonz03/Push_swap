@@ -77,7 +77,6 @@ t_stack *listargv(char **argv, int argc)
 
 int createstack(int argc, char **argv, t_stack *a)
 {
-
 	if (argc == 2)
 	{
 		a = liststring(argv, 1);
@@ -90,6 +89,8 @@ int createstack(int argc, char **argv, t_stack *a)
 		if (!a)
 			return(0);
 	}
+	if(!numrepeat(a))
+        return(ft_printf("Error numrepeat\n"), 1);
 	print_stack(a);
     return (1);
 }

@@ -1,6 +1,23 @@
 #include "push_swap.h"
 #include "libft/libft.h"
 
+int numrepeat(t_stack *a)
+{
+    t_stack *aux;
+
+    while (a)
+    {
+        aux = a->next;
+        while (aux)
+        {
+            if (aux->num == a->num)
+                return(0);
+		    aux = aux->next;
+        }
+        a = a->next;
+    }
+    return(1);
+}
 int onlynum(char **argv)
 {
     int j;
