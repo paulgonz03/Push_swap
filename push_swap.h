@@ -10,6 +10,7 @@
 typedef struct s_stack
 {
 	int				num;
+	int				index;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -25,6 +26,7 @@ int createstack(int argc, char **argv, t_stack *a);
 int numrepeat(t_stack *a);
 int onlynum(char **argv);
 int checkarguments(char **argv);
+int *stacktostring(t_stack *a);
 long int ft_atol(char *str);
 void sa(t_stack **a);
 void sb(t_stack **b);
@@ -37,6 +39,10 @@ void rr(t_stack **a, t_stack **b);
 void rra(t_stack **a);
 void rrb(t_stack **b);
 void rrr(t_stack **a, t_stack **b);
+int *bubble_sort(int *ordennums);
+int *issorter(int *ordennums);
+t_stack *setindex(t_stack *a, int *ordernums);
+
 
 
 

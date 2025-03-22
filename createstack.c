@@ -85,8 +85,37 @@ t_stack *listargv(char **argv, int argc)
 	return(temp);
 }
 
+int *stacktostring(t_stack *a)
+{
+	int *array;
+	int longstack;
+	t_stack *aux;
+	int i;
+
+	i = 0;
+	aux = a;
+	longstack = 1;
+	while (aux->next)
+	{
+		aux = aux->next;
+		longstack++;
+	}
+	array = ft_calloc(longstack + 1, sizeof(int));
+	if(!array)
+		return(0);
+	while (a->next)
+	{
+		array[i] = a->num;
+		a = a->next;
+		i++;
+	}
+	array[i] = a->num;
+	return(array);
+}
+
 int createstack(int argc, char **argv, t_stack *a)
 {
+	int *ordernums;
 	if (argc == 2)
 	{
 		a = liststring(argv, 1);
@@ -101,5 +130,8 @@ int createstack(int argc, char **argv, t_stack *a)
 	}
 	if(!numrepeat(a))
         return(ft_printf("Error numrepeat\n"), 1);
+	ordernums = stacktostring(a);
+	ordernums = issorter(ordernums);
+	a = setindex(a, ordernums);
     return (1);
 }
