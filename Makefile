@@ -5,7 +5,7 @@ LIBFT = $(LIBFT_PATH)/libft.a
 CC = cc
 
 SRC = \
-	main.c parser.c lst.c createstack.c moves1.c moves2.c moves3.c sort.c\
+	main.c parser.c lst.c createstack.c moves1.c moves2.c moves3.c sort.c sort_utils.c\
 
 OBJ = $(SRC:%.c=%.o)
 

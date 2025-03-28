@@ -53,18 +53,22 @@ t_stack	*ft_lstnew(int num)
 {
 	t_stack	*new;
 
-	new = (t_stack *)malloc(sizeof(t_stack));
+	new = malloc(sizeof(t_stack));
 	if (new == NULL)
 		return (0);
 	new->num = num;
 	new->next = NULL;
 	return (new);
 }
-void print_stack(t_stack *stack)
-{ 
-	while (stack)
+int	ft_lstsize(t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	while (a != NULL)
 	{
-		printf("Content: %d\n", stack->num);
-		stack = stack->next;
+		a = a->next;
+		i++;
 	}
+	return (i);
 }

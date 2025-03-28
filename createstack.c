@@ -103,19 +103,17 @@ int *stacktostring(t_stack *a)
 	array = ft_calloc(longstack + 1, sizeof(int));
 	if(!array)
 		return(0);
-	while (a->next)
+	while (a)
 	{
 		array[i] = a->num;
 		a = a->next;
 		i++;
 	}
-	array[i] = a->num;
 	return(array);
 }
 
-int createstack(int argc, char **argv, t_stack *a)
+int createstack(int argc, char **argv, t_stack *a, t_stack *b)
 {
-	int *ordernums;
 	if (argc == 2)
 	{
 		a = liststring(argv, 1);
@@ -130,8 +128,6 @@ int createstack(int argc, char **argv, t_stack *a)
 	}
 	if(!numrepeat(a))
         return(ft_printf("Error numrepeat\n"), 1);
-	ordernums = stacktostring(a);
-	ordernums = issorter(ordernums);
-	a = setindex(a, ordernums);
+	k_sort(a, b);
     return (1);
 }

@@ -47,9 +47,8 @@ void pa(t_stack **a, t_stack **b)
     first_b = *b;
     *b = first_b->next;
     first_b->next =*a;
-    *a =first_b->next;   
+    *a =first_b;
     ft_putstr_fd("pa\n", 1);
-
 }
 
 void pb(t_stack **a, t_stack **b)
@@ -58,10 +57,9 @@ void pb(t_stack **a, t_stack **b)
 
     if (a == NULL || *a == NULL)
         return;
-
     first_a = *a;
     *a = first_a->next;
-    first_a->next =*b;
-    *b =first_a->next;    
+    first_a->next = *b;
+    *b = first_a;    
     ft_putstr_fd("pb\n", 1);
 }

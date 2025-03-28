@@ -6,9 +6,11 @@ void ra(t_stack **a)
     t_stack *first_a;
     t_stack *last_a;
 
+    if (a == NULL || *a == NULL || (*a)->next == NULL)
+        return;
     first_a = *a;
-    *a= first_a->next;
     last_a = *a;
+    *a= first_a->next;
     while(last_a->next)
         last_a = last_a->next;
     last_a->next = first_a;
@@ -21,9 +23,11 @@ void rb(t_stack **b)
     t_stack *first_b;
     t_stack *last_b;
 
+    if (b == NULL || *b == NULL || (*b)->next == NULL)
+        return;
     first_b = *b;
-    *b= first_b->next;
     last_b = *b;
+    *b= first_b->next;
     while(last_b->next)
         last_b = last_b->next;
     last_b->next = first_b;
