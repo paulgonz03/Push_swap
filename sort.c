@@ -58,7 +58,6 @@ t_stack *setindex(t_stack *a, int *ordernums)
         }
         a = a->next;
     }
-    print_stack(head);
     return(head);
 }
 
@@ -75,7 +74,6 @@ void	*ksort_normal(t_stack *a, t_stack *b, int len)
 		range = len / 2;
 	while (a)
 	{
-        print_stack(b);
 		if (a->index <= i)
 		{
 			pb(&a, &b);

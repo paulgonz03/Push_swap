@@ -1,14 +1,14 @@
 #include "push_swap.h"
 #include "libft/libft.h"
 
-void print_stack(t_stack *stack)
-{ 
-	while (stack)
-	{
-		printf("Index: %d, num: %d\n", stack->index, stack->num);
-		stack = stack->next;
-	}
-}
+// void print_stack(t_stack *stack)
+// { 
+// 	while (stack)
+// 	{
+// 		printf("Index: %d, num: %d\n", stack->index, stack->num);
+// 		stack = stack->next;
+// 	}
+// }
 
 int square(int len)
 {
