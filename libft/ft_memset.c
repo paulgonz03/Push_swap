@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulgonz <paulgonz@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/31 11:38:14 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/03/31 11:38:16 by paulgonz         ###   ########.fr       */
+/*   Created: 2024/10/10 20:53:06 by paulgonz          #+#    #+#             */
+/*   Updated: 2024/10/10 20:53:08 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	t_stack	*a;
-	t_stack	*b;
+	unsigned char	*p;
+	size_t			i;
 
-	a = 0;
-	b = NULL;
-	if (argc < 2)
-		error();
-	if (!checkarguments(argv))
-		error();
-	if (!createstack(argc, argv, a, b))
-		error();
-	exit(EXIT_SUCCESS);
+	p = s;
+	i = 0;
+	while (i < n)
+	{
+		p[i] = c;
+		i++;
+	}
+	return (s);
 }
+
+// int main()
+// {
+// 	char s[] = "hola que tal";
+// 	int c = 'c';
+// 	printf ("%p\n", memset(s, c, 9));
+// 	printf ("%p", ft_memset(s, c, 9));
+// 	return(0);
+// }

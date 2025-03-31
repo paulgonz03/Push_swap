@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulgonz <paulgonz@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/31 11:38:14 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/03/31 11:38:16 by paulgonz         ###   ########.fr       */
+/*   Created: 2025/03/31 11:37:05 by paulgonz          #+#    #+#             */
+/*   Updated: 2025/03/31 11:37:07 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strcpy(char *dest, char *src)
 {
-	t_stack	*a;
-	t_stack	*b;
+	int	i;
 
-	a = 0;
-	b = NULL;
-	if (argc < 2)
-		error();
-	if (!checkarguments(argv))
-		error();
-	if (!createstack(argc, argv, a, b))
-		error();
-	exit(EXIT_SUCCESS);
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
