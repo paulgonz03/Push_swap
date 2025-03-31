@@ -38,7 +38,7 @@ int isastring(char *argv)
 	{
 		while ((argv[i]) == 32)
 			i++;
-		while ((argv[i] >= '0' && argv[i] <= '9'))
+		while (((argv[i] >= '0' && argv[i] <= '9') || argv[i] == '-'))
 			i++;
 		while ((argv[i]) == 32)
 			i++;
@@ -56,12 +56,13 @@ t_stack *listargv(char **argv, int argc)
 	t_stack *newnode;
 	t_stack *temp;
     int k;
-	int counter;
+	long int counter;
 	
 	k = 1;
 	temp = 0;
 	while (argv[k] && k < argc)
 	{
+
 		counter = isastring(argv[k]);	
 		if (counter > 0)
 			newnode = liststring(&argv[k], 0);
