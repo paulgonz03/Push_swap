@@ -18,6 +18,7 @@ int numrepeat(t_stack *a)
     }
     return(1);
 }
+
 int onlynum(char **argv)
 {
     int j;

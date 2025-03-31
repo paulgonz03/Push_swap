@@ -1,16 +1,6 @@
 #include "push_swap.h"
 #include "libft/libft.h"
 
-void	freematrix(char **p)
-{
-	int	i;
-
-	i = -1;
-	while (p[++i])
-		free(p[i]);
-	free(p);
-}
-
 t_stack *liststring(char **argv, int k) 
 {
 	char **matrixnum = NULL;

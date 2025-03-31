@@ -38,30 +38,6 @@ int *issorter(int *ordernums)
     return(ordernums);
 }
 
-t_stack *setindex(t_stack *a, int *ordernums)
-{
-    int i;
-    t_stack *head;
-
-    head = a;
-    while(a)
-    {
-        i = 0;
-        while (ordernums[i] != '\0')
-        {
-            if (ordernums[i] == a->num)
-            {
-                a->index = i + 1;
-                break;
-            }
-            i++;
-        }
-        a = a->next;
-    }
-    return(head);
-}
-
-
 void	*ksort_normal(t_stack *a, t_stack *b, int len)
 {
     int range;
@@ -74,11 +50,10 @@ void	*ksort_normal(t_stack *a, t_stack *b, int len)
 		range = len / 2;
 	while (a)
 	{
-		if (a->index <= i)
+		if (a->index <= i++)
 		{
 			pb(&a, &b);
 			rb(&b);
-			i++;
 		}
 		else if (a->index <= i + range)
 		{

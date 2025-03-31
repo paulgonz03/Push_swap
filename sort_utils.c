@@ -1,15 +1,6 @@
 #include "push_swap.h"
 #include "libft/libft.h"
 
-// void print_stack(t_stack *stack)
-// { 
-// 	while (stack)
-// 	{
-// 		printf("Index: %d, num: %d\n", stack->index, stack->num);
-// 		stack = stack->next;
-// 	}
-// }
-
 int square(int len)
 {
     int n;
@@ -44,3 +35,60 @@ int counter(t_stack *b, int pos)
     return(0);
 }
 
+t_stack *setindex(t_stack *a, int *ordernums)
+{
+    int i;
+    t_stack *head;
+
+    head = a;
+    while(a)
+    {
+        i = 0;
+        while (ordernums[i] != '\0')
+        {
+            if (ordernums[i] == a->num)
+            {
+                a->index = i + 1;
+                break;
+            }
+            i++;
+        }
+        a = a->next;
+    }
+    return(head);
+}
+
+void	freematrix(char **p)
+{
+	int	i;
+
+	i = -1;
+	while (p[++i])
+		free(p[i]);
+	free(p);
+}
+
+long int ft_atol(char *str)
+{
+	int	i;
+	long int	sign;
+	long int	res;
+
+	i = 0;
+	sign = 1;
+	res = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = (res * 10) + str[i] - '0';
+		i++;
+	}
+	return (sign * res);
+}
