@@ -118,7 +118,7 @@ int createstack(int argc, char **argv, t_stack *a, t_stack *b)
 			return(0);
 	}
 	if(!numrepeat(a))
-        return(ft_printf("Error numrepeat\n"), 1);
+        return(0);
 	k_sort(a, b);
     return (1);
 }

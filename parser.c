@@ -1,6 +1,12 @@
 #include "push_swap.h"
 #include "libft/libft.h"
 
+void error()
+{
+    ft_printf("Error.\n");
+    exit(EXIT_FAILURE);
+}
+
 int numrepeat(t_stack *a)
 {
     t_stack *aux;

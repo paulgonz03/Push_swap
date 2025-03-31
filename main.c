@@ -6,10 +6,10 @@ int main(int argc, char **argv)
     t_stack *a = 0;
     t_stack *b = NULL;
     if (argc < 2)
-        return(0);
+        error();
     if (!checkarguments(argv))
-        return(ft_printf("Error checkarguments\n"), 1);
+        error();
     if(!createstack(argc, argv, a, b))
-        return(ft_printf("Error createstack\n"), 1);
+        error();
     exit(EXIT_SUCCESS);
 }

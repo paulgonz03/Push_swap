@@ -26,6 +26,7 @@ int isastring(char *argv);
 int createstack(int argc, char **argv, t_stack *a, t_stack *b);
 int *stacktostring(t_stack *a);
 
+void error();
 int numrepeat(t_stack *a);
 int onlynum(char **argv);
 int checkarguments(char **argv);
