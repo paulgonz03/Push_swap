@@ -13,28 +13,42 @@
 #include "libft/libft.h"
 #include "push_swap.h"
 
+
+
+void print_stack(t_stack *stack)
+{
+	while (stack)
+	{
+		printf("Index: %d, num: %d\n", stack->index, stack->num);
+		stack = stack->next;
+	}
+}
+
 t_stack	*liststring(char **argv, int k)
 {
 	char	**matrixnum;
 	t_stack	*newnode;
 	int		j;
 	t_stack	*temp;
-	int		i;
 
 	j = 0;
-	i = 0;
 	matrixnum = ft_split(argv[k], ' ');
-	while (matrixnum[i])
-		i++;
-	if (!matrixnum)
-		return (0);
+	if (!matrixnum[0])
+	{
+		freematrix(matrixnum);
+		return(0);	
+	}
 	temp = ft_lstnew(ft_atol(matrixnum[j]));
 	j++;
 	while (matrixnum[j])
 	{
 		newnode = ft_lstnew(ft_atol(matrixnum[j]));
 		if (!newnode)
+		{
+			freematrix(matrixnum);
+			free_stack(temp);
 			return (0);
+		}
 		ft_lstadd_back(&temp, newnode);
 		j++;
 	}
@@ -83,7 +97,11 @@ t_stack	*listargv(char **argv, int argc)
 		else
 			newnode = ft_lstnew(ft_atol(argv[k]));
 		if (!newnode)
+		{
+			free_stack(newnode);
+			free_stack(temp);
 			return (0);
+		}
 		ft_lstadd_back(&temp, newnode);
 		k++;
 	}
@@ -132,7 +150,10 @@ int	createstack(int argc, char **argv, t_stack *a, t_stack *b)
 			return (0);
 	}
 	if (!numrepeat(a))
+	{
+		free_stack(a);
 		return (0);
+	}
 	k_sort(a, b);
 	return (1);
 }

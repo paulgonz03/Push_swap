@@ -61,3 +61,24 @@ int	ft_lstsize(t_stack *a)
 	}
 	return (i);
 }
+
+// void	ft_lstdelone(t_stack *node)
+// {
+// 	if (node == NULL)
+// 		return ;
+// 	else
+// 		node == node->next;
+// 	free(node);
+// }
+
+void	free_stack(t_stack *stack)
+{
+	t_stack	*temp;
+
+	while (stack)
+	{
+		temp = stack;
+		stack = stack->next;
+		free(temp);
+	}
+}

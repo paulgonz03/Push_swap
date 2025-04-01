@@ -30,6 +30,9 @@ void				ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack				*ft_lstlast(t_stack *lst);
 t_stack				*ft_lstnew(int num);
 int					ft_lstsize(t_stack *a);
+void	free_stack(t_stack *stack);
+void print_stack(t_stack *stack);
+
 
 t_stack				*liststring(char **argv, int k);
 t_stack				*listargv(char **argv, int argc);

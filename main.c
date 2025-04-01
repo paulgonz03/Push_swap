@@ -25,6 +25,10 @@ int	main(int argc, char **argv)
 	if (!checkarguments(argv))
 		error();
 	if (!createstack(argc, argv, a, b))
+	{
+		free_stack(a);
+		free_stack(b);
 		error();
+	}
 	exit(EXIT_SUCCESS);
 }
