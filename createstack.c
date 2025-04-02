@@ -1,73 +1,54 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   createstack.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/31 11:37:35 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/03/31 11:48:31 by paulgonz         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "libft/libft.h"
 #include "push_swap.h"
+#include "libft/libft.h"
 
-
-
-void print_stack(t_stack *stack)
-{
-	while (stack)
-	{
-		printf("Index: %d, num: %d\n", stack->index, stack->num);
-		stack = stack->next;
-	}
-}
-
-t_stack	*liststring(char **argv, int k)
-{
-	char	**matrixnum;
-	t_stack	*newnode;
-	int		j;
-	t_stack	*temp;
-
-	j = 0;
-	matrixnum = ft_split(argv[k], ' ');
-	if (!matrixnum[0])
-	{
-		freematrix(matrixnum);
-		return(0);	
-	}
-	temp = ft_lstnew(ft_atol(matrixnum[j]));
-	j++;
-	while (matrixnum[j])
-	{
-		newnode = ft_lstnew(ft_atol(matrixnum[j]));
-		if (!newnode)
-		{
-			freematrix(matrixnum);
-			free_stack(temp);
-			return (0);
-		}
-		ft_lstadd_back(&temp, newnode);
-		j++;
-	}
-	freematrix(matrixnum);
-	return (temp);
-}
-
-int	isastring(char *argv)
+void	freematrix(char **p)
 {
 	int	i;
-	int	counter;
+
+	i = -1;
+	while (p[++i])
+		free(p[i]);
+	free(p);
+}
+
+t_stack *liststring(char **argv, int k) 
+{
+	char **matrixnum = NULL;
+	t_stack *newnode;
+    int j = 0;
+	t_stack *temp = 0;
+	int i = 0;	
+
+    matrixnum = ft_split(argv[k], ' ');
+	while (matrixnum[i])
+		i++;
+    if (!matrixnum)
+        return(0);
+    temp = ft_lstnew(ft_atol(matrixnum[j]));
+    j++;
+    while (matrixnum[j])
+    {
+	    newnode = ft_lstnew(ft_atol(matrixnum[j]));
+        if (!newnode)
+            return (0);
+        ft_lstadd_back (&temp, newnode);
+        j++;
+    }
+	freematrix(matrixnum);
+	return(temp);
+}
+
+int isastring(char *argv)
+{
+	int i;
+	int counter;
 
 	i = 0;
-	counter = 0;
 	while (argv[i] != '\0')
 	{
 		while ((argv[i]) == 32)
 			i++;
-		while (((argv[i] >= '0' && argv[i] <= '9') || argv[i] == '-'))
+		while ((argv[i] >= '0' && argv[i] <= '9'))
 			i++;
 		while ((argv[i]) == 32)
 			i++;
@@ -77,43 +58,39 @@ int	isastring(char *argv)
 			i++;
 		}
 	}
-	return (counter);
+	return(counter);
 }
 
-t_stack	*listargv(char **argv, int argc)
+t_stack *listargv(char **argv, int argc) 
 {
-	t_stack		*newnode;
-	t_stack		*temp;
-	int			k;
-	long int	counter;
-
+	t_stack *newnode;
+	t_stack *temp;
+    int k;
+	int counter;
+	
 	k = 1;
 	temp = 0;
 	while (argv[k] && k < argc)
 	{
-		counter = isastring(argv[k]);
+		counter = isastring(argv[k]);	
 		if (counter > 0)
 			newnode = liststring(&argv[k], 0);
-		else
+		else 
 			newnode = ft_lstnew(ft_atol(argv[k]));
-		if (!newnode)
-		{
-			free_stack(newnode);
-			free_stack(temp);
-			return (0);
-		}
-		ft_lstadd_back(&temp, newnode);
+        if (!newnode)
+            return (0);
+        ft_lstadd_back (&temp, newnode);
 		k++;
 	}
-	return (temp);
+	return(temp);
 }
 
-int	*stacktostring(t_stack *a)
+int *stacktostring(t_stack *a)
 {
-	int		*array;
-	int		longstack;
-	t_stack	*aux;
-	int		i;
+	int *array;
+	int longstack;
+	t_stack *aux;
+	int i;
 
 	i = 0;
 	aux = a;
@@ -124,36 +101,33 @@ int	*stacktostring(t_stack *a)
 		longstack++;
 	}
 	array = ft_calloc(longstack + 1, sizeof(int));
-	if (!array)
-		return (0);
+	if(!array)
+		return(0);
 	while (a)
 	{
 		array[i] = a->num;
 		a = a->next;
 		i++;
 	}
-	return (array);
+	return(array);
 }
 
-int	createstack(int argc, char **argv, t_stack *a, t_stack *b)
+int createstack(int argc, char **argv, t_stack *a, t_stack *b)
 {
 	if (argc == 2)
 	{
 		a = liststring(argv, 1);
 		if (!a)
-			return (0);
+			return(0);
 	}
-	else
+	else 
 	{
 		a = listargv(argv, argc);
 		if (!a)
-			return (0);
+			return(0);
 	}
-	if (!numrepeat(a))
-	{
-		free_stack(a);
-		return (0);
-	}
+	if(!numrepeat(a))
+        return(ft_printf("Error numrepeat\n"), 1);
 	k_sort(a, b);
-	return (1);
+    return (1);
 }
