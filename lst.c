@@ -1,30 +1,18 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lst.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/31 11:38:02 by paulgonz          #+#    #+#             */
+/*   Updated: 2025/03/31 11:48:13 by paulgonz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft/libft.h"
+#include "push_swap.h"
 
-long int ft_atol(char *str)
-{
-	int	i;
-	long int	sign;
-	long int	res;
-
-	i = 0;
-	sign = 1;
-	res = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (res * 10) + str[i] - '0';
-		i++;
-	}
-	return (sign * res);
-}
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*last;
@@ -60,6 +48,7 @@ t_stack	*ft_lstnew(int num)
 	new->next = NULL;
 	return (new);
 }
+
 int	ft_lstsize(t_stack *a)
 {
 	int	i;
@@ -71,4 +60,16 @@ int	ft_lstsize(t_stack *a)
 		i++;
 	}
 	return (i);
+}
+
+void	free_stack(t_stack *stack)
+{
+	t_stack	*temp;
+
+	while (stack)
+	{
+		temp = stack;
+		stack = stack->next;
+		free(temp);
+	}
 }
