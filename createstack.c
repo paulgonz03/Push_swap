@@ -102,6 +102,7 @@ t_stack	*listargv(char **argv, int argc)
 		}
 		ft_lstadd_back(&temp, newnode);
 		k++;
+		// free_stack(newnode);
 	}
 	return (temp);
 }

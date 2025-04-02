@@ -63,4 +63,5 @@ t_stack				*setindex(t_stack *a, int *ordernums);
 void				freematrix(char **p);
 long int			ft_atol(char *str);
 
+
 #endif
