@@ -30,9 +30,8 @@ void				ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack				*ft_lstlast(t_stack *lst);
 t_stack				*ft_lstnew(int num);
 int					ft_lstsize(t_stack *a);
-void	free_stack(t_stack *stack);
-void print_stack(t_stack *stack);
-
+void				free_stack(t_stack *stack);
+void				print_stack(t_stack *stack);
 
 t_stack				*liststring(char **argv, int k);
 t_stack				*listargv(char **argv, int argc);
@@ -54,14 +53,13 @@ void				rrb(t_stack **b);
 int					*bubble_sort(int *ordennums);
 int					*issorter(int *ordennums);
 void				k_sort(t_stack *a, t_stack *b);
-void				*ksort_normal(t_stack *a, t_stack *b, int len);
-void				*ksort_reverse(t_stack *a, t_stack *b, int len);
+t_stack				*ksort_normal(t_stack *a, t_stack *b, int len);
+t_stack				*ksort_reverse(t_stack *a, t_stack *b, int len);
 
 int					square(int len);
 int					counter(t_stack *b, int pos);
 t_stack				*setindex(t_stack *a, int *ordernums);
 void				freematrix(char **p);
 long int			ft_atol(char *str);
-
 
 #endif

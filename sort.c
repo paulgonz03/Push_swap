@@ -51,7 +51,7 @@ int	*issorter(int *ordernums)
 	return (ordernums);
 }
 
-void	*ksort_normal(t_stack *a, t_stack *b, int len)
+t_stack	*ksort_normal(t_stack *a, t_stack *b, int len)
 {
 	int	range;
 	int	i;
@@ -77,11 +77,10 @@ void	*ksort_normal(t_stack *a, t_stack *b, int len)
 		else
 			ra(&a);
 	}
-	ksort_reverse(a, b, len);
-	return (0);
+	return (ksort_reverse(a, b, len));
 }
 
-void	*ksort_reverse(t_stack *a, t_stack *b, int len)
+t_stack	*ksort_reverse(t_stack *a, t_stack *b, int len)
 {
 	int	rb_num;
 	int	rrb_num;
@@ -120,5 +119,6 @@ void	k_sort(t_stack *a, t_stack *b)
 	ordernums = issorter(numsinstring);
 	a = setindex(a, ordernums);
 	free(ordernums);
-	ksort_normal(a, b, len);
+	a = ksort_normal(a, b, len);
+	free_stack(a);
 }
