@@ -51,12 +51,14 @@ t_stack	*setindex(t_stack *a, int *ordernums)
 {
 	int		i;
 	t_stack	*head;
+	int size;
 
+	size = ft_lstsize(a);
 	head = a;
 	while (a)
 	{
 		i = 0;
-		while (ordernums[i] != '\0')
+		while (i < size)
 		{
 			if (ordernums[i] == a->num)
 			{

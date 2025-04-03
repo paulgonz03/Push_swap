@@ -13,14 +13,14 @@
 #include "libft/libft.h"
 #include "push_swap.h"
 
-// void print_stack(t_stack *stack)
-// {
-// 	while (stack)
-// 	{
-// 		printf("Index: %d, num: %d\n", stack->index, stack->num);
-// 		stack = stack->next;
-// 	}
-// }
+void print_stack(t_stack *stack)
+{
+	while (stack)
+	{
+		printf("Index: %d, num: %d\n", stack->index, stack->num);
+		stack = stack->next;
+	}
+}
 
 t_stack	*liststring(char **argv, int k)
 {
