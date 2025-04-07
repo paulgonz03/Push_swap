@@ -42,6 +42,7 @@ int					*stacktostring(t_stack *a);
 void				error(void);
 int					numrepeat(t_stack *a);
 int					onlynum(char **argv);
+int is_order(t_stack *a);
 int					checkarguments(char **argv);
 
 void				pa(t_stack **a, t_stack **b);

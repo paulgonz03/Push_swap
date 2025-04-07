@@ -58,6 +58,18 @@ int	onlynum(char **argv)
 	return (1);
 }
 
+int is_order(t_stack *a)
+{
+	while (a && a->next)
+	{
+		if (a->num < a->next->num)
+			a = a->next;
+		else 
+			return(1);
+	}
+	return(0);
+}
+
 int	checkarguments(char **argv)
 {
 	if (!onlynum(argv))

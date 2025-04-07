@@ -145,10 +145,9 @@ int	createstack(int argc, char **argv, t_stack *a, t_stack *b)
 			return (0);
 	}
 	if (!numrepeat(a))
-	{
-		free_stack(a);
-		return (0);
-	}
+		return (free_stack(a), 0);
+	if (!is_order(a))
+		return(free_stack(a), 1);
 	k_sort(a, b);
 	return (1);
 }
