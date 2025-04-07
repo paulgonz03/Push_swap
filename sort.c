@@ -33,7 +33,7 @@ int	*bubble_sort(int *ordennums)
 	return (ordennums);
 }
 
-int	*issorter(int *ordernums)
+int	*is_sorter(int *ordernums)
 {
 	int	i;
 
@@ -115,9 +115,9 @@ void	k_sort(t_stack *a, t_stack *b)
 	int	len;
 
 	len = ft_lstsize(a);
-	numsinstring = stacktostring(a);
-	ordernums = issorter(numsinstring);
-	a = setindex(a, ordernums);
+	numsinstring = stack_to_string(a);
+	ordernums = is_sorter(numsinstring);
+	a = set_index(a, ordernums);
 	free(ordernums);
 	a = ksort_normal(a, b, len);
 	free_stack(a);

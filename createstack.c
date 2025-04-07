@@ -22,7 +22,7 @@ void print_stack(t_stack *stack)
 	}
 }
 
-t_stack	*liststring(char **argv, int k)
+t_stack	*list_is_string(char **argv, int k)
 {
 	char	**matrixnum;
 	t_stack	*newnode;
@@ -51,7 +51,7 @@ t_stack	*liststring(char **argv, int k)
 	return (temp);
 }
 
-int	isastring(char *argv)
+int	is_string(char *argv)
 {
 	int	i;
 	int	counter;
@@ -75,7 +75,7 @@ int	isastring(char *argv)
 	return (counter);
 }
 
-t_stack	*listargv(char **argv, int argc)
+t_stack	*list_is_argv(char **argv, int argc)
 {
 	t_stack		*newnode;
 	t_stack		*temp;
@@ -86,9 +86,9 @@ t_stack	*listargv(char **argv, int argc)
 	temp = 0;
 	while (argv[k] && k < argc)
 	{
-		counter = isastring(argv[k]);
+		counter = is_string(argv[k]);
 		if (counter > 0)
-			newnode = liststring(&argv[k], 0);
+			newnode = list_is_string(&argv[k], 0);
 		else
 			newnode = ft_lstnew(ft_atol(argv[k]));
 		if (!newnode)
@@ -103,7 +103,7 @@ t_stack	*listargv(char **argv, int argc)
 	return (temp);
 }
 
-int	*stacktostring(t_stack *a)
+int	*stack_to_string(t_stack *a)
 {
 	int		*array;
 	int		longstack;
@@ -130,21 +130,21 @@ int	*stacktostring(t_stack *a)
 	return (array);
 }
 
-int	createstack(int argc, char **argv, t_stack *a, t_stack *b)
+int	create_stack(int argc, char **argv, t_stack *a, t_stack *b)
 {
 	if (argc == 2)
 	{
-		a = liststring(argv, 1);
+		a = list_is_string(argv, 1);
 		if (!a)
 			return (0);
 	}
 	else
 	{
-		a = listargv(argv, argc);
+		a = list_is_argv(argv, argc);
 		if (!a)
 			return (0);
 	}
-	if (!numrepeat(a))
+	if (!is_num_repeat(a))
 		return (free_stack(a), 0);
 	if (!is_order(a))
 		return(free_stack(a), 1);

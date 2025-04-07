@@ -22,9 +22,9 @@ int	main(int argc, char **argv)
 	b = NULL;
 	if (argc < 2)
 		error();
-	if (!checkarguments(argv))
+	if (!check_arguments(argv))
 		error();
-	if (!createstack(argc, argv, a, b))
+	if (!create_stack(argc, argv, a, b))
 		error();
 	exit(EXIT_SUCCESS);
 }

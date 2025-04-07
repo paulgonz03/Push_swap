@@ -47,7 +47,7 @@ int	counter(t_stack *b, int pos)
 	return (0);
 }
 
-t_stack	*setindex(t_stack *a, int *ordernums)
+t_stack	*set_index(t_stack *a, int *ordernums)
 {
 	int		i;
 	t_stack	*head;

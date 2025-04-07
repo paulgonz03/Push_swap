@@ -19,7 +19,7 @@ void	error(void)
 	exit(EXIT_FAILURE);
 }
 
-int	numrepeat(t_stack *a)
+int	is_num_repeat(t_stack *a)
 {
 	t_stack	*aux;
 
@@ -37,7 +37,7 @@ int	numrepeat(t_stack *a)
 	return (1);
 }
 
-int	onlynum(char **argv)
+int	is_only_num(char **argv)
 {
 	int	j;
 	int	i;
@@ -70,9 +70,9 @@ int is_order(t_stack *a)
 	return(0);
 }
 
-int	checkarguments(char **argv)
+int	check_arguments(char **argv)
 {
-	if (!onlynum(argv))
+	if (!is_only_num(argv))
 		return (0);
 	return (1);
 }

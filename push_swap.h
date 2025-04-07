@@ -33,17 +33,17 @@ int					ft_lstsize(t_stack *a);
 void				free_stack(t_stack *stack);
 void				print_stack(t_stack *stack);
 
-t_stack				*liststring(char **argv, int k);
-t_stack				*listargv(char **argv, int argc);
-int					isastring(char *argv);
-int					createstack(int argc, char **argv, t_stack *a, t_stack *b);
-int					*stacktostring(t_stack *a);
+t_stack				*list_is_string(char **argv, int k);
+t_stack				*list_is_argv(char **argv, int argc);
+int					is_string(char *argv);
+int					create_stack(int argc, char **argv, t_stack *a, t_stack *b);
+int					*stack_to_string(t_stack *a);
 
 void				error(void);
-int					numrepeat(t_stack *a);
-int					onlynum(char **argv);
+int					is_num_repeat(t_stack *a);
+int					is_only_num(char **argv);
 int is_order(t_stack *a);
-int					checkarguments(char **argv);
+int					check_arguments(char **argv);
 
 void				pa(t_stack **a, t_stack **b);
 void				pb(t_stack **a, t_stack **b);
@@ -52,14 +52,14 @@ void				rb(t_stack **b);
 void				rrb(t_stack **b);
 
 int					*bubble_sort(int *ordennums);
-int					*issorter(int *ordennums);
+int					*is_sorter(int *ordennums);
 void				k_sort(t_stack *a, t_stack *b);
 t_stack				*ksort_normal(t_stack *a, t_stack *b, int len);
 t_stack				*ksort_reverse(t_stack *a, t_stack *b, int len);
 
 int					square(int len);
 int					counter(t_stack *b, int pos);
-t_stack				*setindex(t_stack *a, int *ordernums);
+t_stack				*set_index(t_stack *a, int *ordernums);
 void				freematrix(char **p);
 long int			ft_atol(char *str);
 
