@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulgonz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:05:18 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/04/08 13:05:19 by paulgonz         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:04:11 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	rb(t_stack **b)
 {
 	t_stack	*first_b;
 	t_stack	*last_b;
-
+	
+	if (*b == NULL || (*b)->next == NULL)
+        return;
 	first_b = *b;
 	*b = first_b->next;
 	last_b = *b;

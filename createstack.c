@@ -6,21 +6,21 @@
 /*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:37:35 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/04/08 14:17:43 by paulgonz         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:28:44 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-// void print_stack(t_stack *stack)
-// {
-// 	while (stack)
-// 	{
-// 		printf("Index: %d, num: %d\n", stack->index, stack->num);
-// 		stack = stack->next;
-// 	}
-// }
+void print_stack(t_stack *stack)
+{
+	while (stack)
+	{
+		printf("Index: %d, num: %ld\n", stack->index, stack->num);
+		stack = stack->next;
+	}
+}
 
 t_stack	*list_is_string(char **argv, int k)
 {
@@ -34,21 +34,20 @@ t_stack	*list_is_string(char **argv, int k)
 	if (!matrixnum[0])
 		return (freematrix(matrixnum), NULL);
 	temp = ft_lstnew(ft_atol(matrixnum[j]));
+	if (temp->num < INT_MIN || temp->num > INT_MAX)
+		return (free_stack(temp), freematrix(matrixnum), NULL);
 	j++;
 	while (matrixnum[j])
 	{
 		newnode = ft_lstnew(ft_atol(matrixnum[j]));
+		if (newnode->num < INT_MIN || newnode->num > INT_MAX)
+			return (free_stack(temp), freematrix(matrixnum),free_stack(newnode), NULL);
 		if (!newnode)
-		{
-			freematrix(matrixnum);
-			free_stack(temp);
-			return (0);
-		}
+			return (freematrix(matrixnum), free_stack(temp), NULL);
 		ft_lstadd_back(&temp, newnode);
 		j++;
 	}
-	freematrix(matrixnum);
-	return (temp);
+	return (freematrix(matrixnum), temp);
 }
 
 int	is_string(char *argv)
@@ -92,16 +91,9 @@ t_stack	*list_is_argv(char **argv, int argc)
 		else
 			newnode = ft_lstnew(ft_atol(argv[k]));
 		if (newnode->num < INT_MIN || newnode->num > INT_MAX)
-		{
-			free_stack(newnode); 
-			return(0);
-		}
+			return (free_stack(newnode), free_stack(temp), NULL);
 		if (!newnode)
-		{
-			free_stack(newnode);
-			free_stack(temp);
-			return (0);
-		}
+			return (free_stack(newnode), free_stack(temp), NULL);
 		ft_lstadd_back(&temp, newnode);
 		k++;
 	}

@@ -6,7 +6,7 @@
 /*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:38:59 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/04/08 12:58:51 by paulgonz         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:10:37 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,5 @@ void	k_sort(t_stack *a, t_stack *b)
 	free(ordernums);
 	a = ksort_normal(a, b, len);
 	free_stack(a);
+	free_stack(b);
 }
