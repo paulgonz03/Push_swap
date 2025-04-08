@@ -6,21 +6,21 @@
 /*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:37:35 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/03/31 11:48:31 by paulgonz         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:02:01 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void print_stack(t_stack *stack)
-{
-	while (stack)
-	{
-		printf("Index: %d, num: %d\n", stack->index, stack->num);
-		stack = stack->next;
-	}
-}
+// void print_stack(t_stack *stack)
+// {
+// 	while (stack)
+// 	{
+// 		printf("Index: %d, num: %d\n", stack->index, stack->num);
+// 		stack = stack->next;
+// 	}
+// }
 
 t_stack	*list_is_string(char **argv, int k)
 {
@@ -132,27 +132,27 @@ int	*stack_to_string(t_stack *a)
 
 int	create_stack(int argc, char **argv, t_stack *a, t_stack *b)
 {
-	int counter;
+	int	counter;
 
 	if (argc == 2)
 	{
 		a = list_is_string(argv, 1);
 		if (!a)
-		return (0);
+			return (0);
 	}
 	else
 	{
 		a = list_is_argv(argv, argc);
 		if (!a)
-		return (0);
+			return (0);
 	}
 	if (!is_num_repeat(a))
 		return (free_stack(a), 0);
 	if (!is_order(a))
-		return(free_stack(a), 1);
+		return (free_stack(a), 1);
 	counter = ft_lstsize(a);
 	if (counter < 6)
-		return(sort_less(a, b, counter), 1);
-	else 
-		return(k_sort(a, b), 1);
+		return (sort_less(a, b, counter), 1);
+	else
+		return (k_sort(a, b), 1);
 }

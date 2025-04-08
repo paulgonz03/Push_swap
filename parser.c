@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulgonz <paulgonz@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:38:36 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/03/31 11:38:38 by paulgonz         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:06:10 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ int	is_only_num(char **argv)
 	return (1);
 }
 
-int is_order(t_stack *a)
+int	is_order(t_stack *a)
 {
 	while (a && a->next)
 	{
 		if (a->num < a->next->num)
 			a = a->next;
-		else 
-			return(1);
+		else
+			return (1);
 	}
-	return(0);
+	return (0);
 }
 
 int	check_arguments(char **argv)

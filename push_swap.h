@@ -6,7 +6,7 @@
 /*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:39:34 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/03/31 11:48:18 by paulgonz         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:06:36 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,20 @@ int					*stack_to_string(t_stack *a);
 void				error(void);
 int					is_num_repeat(t_stack *a);
 int					is_only_num(char **argv);
-int is_order(t_stack *a);
+int					is_order(t_stack *a);
 int					check_arguments(char **argv);
 
-void sa(t_stack **a);
-void sb(t_stack **b);
-void ss(t_stack **a, t_stack **b);
-void pa(t_stack **a, t_stack **b);
-void pb(t_stack **a, t_stack **b);
-void ra(t_stack **a);
-void rb(t_stack **b);
-void rr(t_stack **a, t_stack **b);
-void rra(t_stack **a);
-void rrb(t_stack **b);
-void rrr(t_stack **a, t_stack **b);
+void				sa(t_stack **a);
+void				sb(t_stack **b);
+void				ss(t_stack **a, t_stack **b);
+void				pa(t_stack **a, t_stack **b);
+void				pb(t_stack **a, t_stack **b);
+void				ra(t_stack **a);
+void				rb(t_stack **b);
+void				rr(t_stack **a, t_stack **b);
+void				rra(t_stack **a);
+void				rrb(t_stack **b);
+void				rrr(t_stack **a, t_stack **b);
 
 int					*bubble_sort(int *ordennums);
 int					*is_sorter(int *ordennums);
@@ -69,10 +69,10 @@ t_stack				*set_index(t_stack *a, int *ordernums);
 void				freematrix(char **p);
 long int			ft_atol(char *str);
 
-t_stack *sort_three(t_stack *a);
-t_stack *sort_five(t_stack *stack_a, t_stack *stack_b);
-int get_min(t_stack *a);
-int get_max(t_stack *a);
-void sort_less(t_stack *a, t_stack *b, int counter);
+t_stack				*sort_three(t_stack *a);
+t_stack				*sort_five(t_stack *stack_a, t_stack *stack_b);
+int					get_min(t_stack *a);
+int					get_max(t_stack *a);
+void				sort_less(t_stack *a, t_stack *b, int counter);
 
 #endif

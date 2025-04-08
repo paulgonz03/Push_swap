@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulgonz <paulgonz@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:38:51 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/03/31 11:38:52 by paulgonz         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:06:59 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_stack	*set_index(t_stack *a, int *ordernums)
 {
 	int		i;
 	t_stack	*head;
-	int size;
+	int		size;
 
 	size = ft_lstsize(a);
 	head = a;
