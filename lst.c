@@ -6,7 +6,7 @@
 /*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:38:02 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/03/31 11:48:13 by paulgonz         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:04:35 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (lst);
 }
 
-t_stack	*ft_lstnew(int num)
+t_stack	*ft_lstnew(long int num)
 {
 	t_stack	*new;
 

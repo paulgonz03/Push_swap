@@ -6,16 +6,17 @@
 /*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:38:36 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/04/08 13:06:10 by paulgonz         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:16:25 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
+#include <limits.h>
 
 void	error(void)
 {
-	ft_printf("Error.\n");
+	ft_printf("Error\n");
 	exit(EXIT_FAILURE);
 }
 

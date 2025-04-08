@@ -6,7 +6,7 @@
 /*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:39:34 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/04/08 13:06:36 by paulgonz         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:04:49 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 
 typedef struct s_stack
 {
-	int				num;
+	long int		num;
 	int				index;
 	struct s_stack	*next;
 }					t_stack;
 
 void				ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack				*ft_lstlast(t_stack *lst);
-t_stack				*ft_lstnew(int num);
+t_stack				*ft_lstnew(long int num);
 int					ft_lstsize(t_stack *a);
 void				free_stack(t_stack *stack);
 void				print_stack(t_stack *stack);

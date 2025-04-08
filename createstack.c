@@ -6,7 +6,7 @@
 /*   By: paulgonz <paulgonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:37:35 by paulgonz          #+#    #+#             */
-/*   Updated: 2025/04/08 13:02:01 by paulgonz         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:17:43 by paulgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,11 @@ t_stack	*list_is_argv(char **argv, int argc)
 			newnode = list_is_string(&argv[k], 0);
 		else
 			newnode = ft_lstnew(ft_atol(argv[k]));
+		if (newnode->num < INT_MIN || newnode->num > INT_MAX)
+		{
+			free_stack(newnode); 
+			return(0);
+		}
 		if (!newnode)
 		{
 			free_stack(newnode);
@@ -138,13 +143,13 @@ int	create_stack(int argc, char **argv, t_stack *a, t_stack *b)
 	{
 		a = list_is_string(argv, 1);
 		if (!a)
-			return (0);
+			return (free_stack(a), 0);
 	}
 	else
 	{
 		a = list_is_argv(argv, argc);
 		if (!a)
-			return (0);
+			return (free_stack(a), 0);
 	}
 	if (!is_num_repeat(a))
 		return (free_stack(a), 0);
