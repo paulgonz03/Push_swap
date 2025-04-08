@@ -132,22 +132,27 @@ int	*stack_to_string(t_stack *a)
 
 int	create_stack(int argc, char **argv, t_stack *a, t_stack *b)
 {
+	int counter;
+
 	if (argc == 2)
 	{
 		a = list_is_string(argv, 1);
 		if (!a)
-			return (0);
+		return (0);
 	}
 	else
 	{
 		a = list_is_argv(argv, argc);
 		if (!a)
-			return (0);
+		return (0);
 	}
 	if (!is_num_repeat(a))
 		return (free_stack(a), 0);
 	if (!is_order(a))
 		return(free_stack(a), 1);
-	k_sort(a, b);
-	return (1);
+	counter = ft_lstsize(a);
+	if (counter < 6)
+		return(sort_less(a, b, counter), 1);
+	else 
+		return(k_sort(a, b), 1);
 }

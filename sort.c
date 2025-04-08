@@ -13,112 +13,87 @@
 #include "libft/libft.h"
 #include "push_swap.h"
 
-int	*bubble_sort(int *ordennums)
+int get_max(t_stack *a)
 {
-	int	i;
-	int	aux;
+    int max;
 
-	i = 0;
-	aux = 0;
-	while (ordennums[i] && ordennums[i + 1])
-	{
-		if (ordennums[i] > ordennums[i + 1])
-		{
-			aux = ordennums[i];
-			ordennums[i] = ordennums[i + 1];
-			ordennums[i + 1] = aux;
-		}
-		i++;
-	}
-	return (ordennums);
+    max = a->num;
+    while(a)
+    {
+        if (a->num > max)
+            max = a->num;
+        a = a->next; 
+    }
+    return(max);
 }
 
-int	*is_sorter(int *ordernums)
+int get_min(t_stack *a)
 {
-	int	i;
+    int min;
 
-	i = 0;
-	while (ordernums[i] && ordernums[i + 1])
-	{
-		if (ordernums[i] < ordernums[i + 1])
-			i++;
-		else
-		{
-			ordernums = bubble_sort(ordernums);
-			i = 0;
-		}
-	}
-	return (ordernums);
+    min = a->num;
+    while(a)
+    {
+        if (a->num < min)
+            min = a->num;
+        a = a->next; 
+    }
+    return(min);
 }
 
-t_stack	*ksort_normal(t_stack *a, t_stack *b, int len)
+t_stack *sort_three(t_stack *a)
 {
-	int	range;
-	int	i;
+    int max;
+    int min;
 
-	i = 1;
-	if (len > 7)
-		range = square(len) * 14 / 10;
-	else
-		range = len / 2;
-	while (a)
-	{
-		if (a->index <= i)
-		{
-			pb(&a, &b);
-			rb(&b);
-			i++;
-		}
-		else if (a->index <= i + range)
-		{
-			pb(&a, &b);
-			i++;
-		}
-		else
-			ra(&a);
-	}
-	return (ksort_reverse(a, b, len));
+    max = get_max(a);
+    min = get_min(a);
+    if (a->num == max && a->next->num != min)
+    {
+        ra(&a);
+        sa(&a);
+    }
+    else if (a->num == min && a->next->num == max)
+    {
+        sa(&a);
+        ra(&a);
+    }
+    else if (a->num == max && a->next->num == min)
+        ra(&a);
+    else if (a->next->num == min && a->next->next->num == max)
+        sa(&a);
+    else if (a->next->num == max && a->next->next->num  == min)
+        rra(&a);
+    return(a);
 }
 
-t_stack	*ksort_reverse(t_stack *a, t_stack *b, int len)
+t_stack *sort_five(t_stack *a, t_stack *b)
 {
-	int	rb_num;
-	int	rrb_num;
-
-	while (len - 1 >= 0)
-	{
-		rb_num = counter(b, len - 1);
-		rrb_num = (len + 3) - rb_num;
-		if (rb_num <= rrb_num)
-		{
-			while (b->index != len - 1 && b->next)
-				rb(&b);
-			pa(&a, &b);
-			len--;
-		}
-		else
-		{
-			while (b->index != len - 1)
-				rrb(&b);
-			pa(&a, &b);
-			len--;
-		}
-	}
-	ra(&a);
-	return (a);
+    while (ft_lstsize(a) > 3 && a && a->next)
+    {
+        if (a->num == get_min(a))
+            pb(&a, &b);
+        else
+            ra(&a);
+    }
+    if (is_order(a) == 0)
+        return (a);
+    a = sort_three(a);
+    while (b)
+        pa(&a, &b);
+    return(a);
 }
 
-void	k_sort(t_stack *a, t_stack *b)
+void sort_less(t_stack *a, t_stack *b, int counter)
 {
-	int	*numsinstring;
-	int	*ordernums;
-	int	len;
-
-	len = ft_lstsize(a);
-	numsinstring = stack_to_string(a);
-	ordernums = is_sorter(numsinstring);
-	a = set_index(a, ordernums);
-	free(ordernums);
-	a = ksort_normal(a, b, len);
-	free_stack(a);
+    if (counter <= 3)
+	{
+		a = sort_three(a);
+		return(free_stack(a), free_stack(b));
+	}
+	if (counter > 3 && counter < 6)
+	{
+		a = sort_five(a, b);
+		return(free_stack(a), free_stack(b));
+	}
 }
